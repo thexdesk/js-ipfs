@@ -44,7 +44,7 @@ describe('name', function () {
     before(async function () {
       ipfsd = await df.spawn({
         exec: IPFS,
-        args: [`--pass ${hat()}`, '--offline'],
+        args: ['--pass', hat(), '--offline'],
         config: { Bootstrap: [] },
         preload: { enabled: false }
       })
@@ -96,7 +96,7 @@ describe('name', function () {
     const createNode = (callback) => {
       df.spawn({
         exec: IPFS,
-        args: [`--pass ${hat()}`],
+        args: ['--pass', hat()],
         config: {
           Bootstrap: [],
           Discovery: {
@@ -182,7 +182,7 @@ describe('name', function () {
       this.timeout(40 * 1000)
       ipfsd = await df.spawn({
         exec: IPFS,
-        args: [`--pass ${hat()}`],
+        args: ['--pass', hat()],
         config: {
           Bootstrap: [],
           Discovery: {
@@ -347,7 +347,7 @@ describe('name', function () {
       this.timeout(40 * 1000)
       ipfsd = await df.spawn({
         exec: IPFS,
-        args: [`--pass ${hat()}`, '--offline'],
+        args: ['--pass', hat(), '--offline'],
         config: {
           Bootstrap: [],
           Discovery: {
