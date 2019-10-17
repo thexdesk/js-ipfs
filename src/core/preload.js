@@ -13,8 +13,8 @@ log.error = debug('ipfs:preload:error')
 
 const noop = (err) => { if (err) log.error(err) }
 
-module.exports = self => {
-  const options = self._options.preload || {}
+module.exports = options => {
+  options = options || {}
   options.enabled = Boolean(options.enabled)
   options.addresses = options.addresses || []
 
