@@ -291,7 +291,9 @@ exports.ls = {
           Hash: cidToString(file.hash, { base: cidBase }),
           Size: file.size,
           Type: toTypeCode(file.type),
-          Depth: file.depth
+          Depth: file.depth,
+          Mode: file.mode.toString(8).padStart(4, '0'),
+          Mtime: file.mtime
         }))
       }]
     })

@@ -8,6 +8,7 @@ const multibase = require('multibase')
 const { createProgressBar } = require('../utils')
 const { cidToString } = require('../../utils/cid')
 const globSource = require('ipfs-utils/src/files/glob-source')
+const errcode = require('err-code')
 
 async function getTotalBytes (paths) {
   const sizes = await Promise.all(paths.map(p => getFolderSize(p)))
@@ -106,6 +107,32 @@ module.exports = {
       type: 'boolean',
       default: true,
       describe: 'Preload this object when adding'
+    },
+    'preserve-mode': {
+      type: 'boolean',
+      default: false,
+      describe: 'Apply permissions to created UnixFS entries'
+    },
+    'preserve-mtime': {
+      type: 'boolean',
+      default: false,
+      describe: 'Apply modification time to created UnixFS entries'
+    },
+    'mode': {
+      type: 'number',
+      coerce: (value) => parseInt(value, 8),
+      describe: 'File mode to apply to created UnixFS entries'
+    },
+    'mtime': {
+      type: 'number',
+      coerce: (value) => {
+        value = parseInt(value)
+
+        if (isNaN(value)) {
+          throw errcode(new Error('mtime must be a number'), 'ERR_BAD_MTIME')
+        }
+      },
+      describe: 'Modification in seconds before or since the Unix Epoch to apply to created UnixFS entries'
     }
   },
 
@@ -153,7 +180,13 @@ module.exports = {
       }
 
       const source = argv.file
-        ? globSource(argv.file, { recursive: argv.recursive })
+        ? globSource(argv.file, {
+          recursive: argv.recursive,
+          preserveMode: argv.preserveMode,
+          preserveMtime: argv.preserveMtime,
+          mode: argv.mode,
+          mtime: argv.mtime
+        })
         : process.stdin // Pipe directly to ipfs.add
 
       let finalHash
