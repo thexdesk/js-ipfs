@@ -10,7 +10,7 @@
   "license": "MIT",
   "dependencies": {
     "ipfs": "file:../../",
-    "libp2p": "^0.26.2",
+    "libp2p": "^0.32.4",
     "libp2p-bootstrap": "~0.9.7",
     "libp2p-kad-dht": "~0.16.0",
     "libp2p-mdns": "~0.12.2",
