@@ -9,9 +9,9 @@
   },
   "license": "MIT",
   "dependencies": {
-    "datastore-fs": "^0.9.1",
+    "datastore-fs": "^2.0.0",
     "ipfs": "file:../../",
-    "ipfs-repo": "^0.28.0"
+    "ipfs-repo": "^6.0.0"
   },
   "devDependencies": {
     "execa": "^3.2.0"
