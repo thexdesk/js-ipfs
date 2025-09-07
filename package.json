@@ -125,7 +125,7 @@
     "iso-url": "~0.4.6",
     "it-pipe": "^1.0.1",
     "it-to-stream": "^0.1.1",
-    "jsondiffpatch": "~0.3.11",
+    "jsondiffpatch": "~0.7.2",
     "just-safe-set": "^2.1.0",
     "kind-of": "^6.0.2",
     "ky": "^0.15.0",
